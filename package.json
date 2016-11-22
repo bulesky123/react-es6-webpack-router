@@ -1,0 +1,43 @@
+{
+  "name": "react-es6-router",
+  "version": "1.0.0",
+  "description": "react es6 touter\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dstudy",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "watch": "webpack-dev-server --hot --inline --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bulesky123/react-es6-webpack-router.git"
+  },
+  "keywords": [
+    "react",
+    "es6",
+    "router",
+    "webpack"
+  ],
+  "author": "zhoufei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bulesky123/react-es6-webpack-router/issues"
+  },
+  "homepage": "https://github.com/bulesky123/react-es6-webpack-router#readme",
+  "devDependencies": {
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.1.0",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-stage-0": "^6.1.2",
+    "babel-preset-react": "^6.16.0",
+    "babel-runtime": "^5.8.0",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-router": "^2.4.1",
+    "style-loader": "^0.13.0",
+    "css-loader": "^0.23.0",
+    "cssnext-loader": "^1.0.1",
+    "file-loader": "^0.8.4",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
