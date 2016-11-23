@@ -206,7 +206,7 @@
 .ftBorder{ position: absolute; left:0; bottom:49px;width:100%;}
 .ftBorder img{ width:100%; height:auto; background-size: contain; display: block;}
 #shade{position: fixed;  left: 0;top: 0;width: 100%;bottom:0;background: rgba(0,0,0,0);z-index:111;}
-
+.hide{display: none;}
 /*orderConfirem*/
 .confirmeBox{
     padding: 20px;

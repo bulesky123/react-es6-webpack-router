@@ -11,7 +11,7 @@ export default class LoadCartoon extends React.Component {
     }
     render() {
         return (
-            <div className="loadBlock">
+            <div className={this.props.isHide+" loadBlock"}>
                 <div className="loadBg" />
                 <div className="loadCartoon"><div className="loadHead" />
                     <div className="loadBody" /><div className="loadDun" />

@@ -11,7 +11,8 @@ export default class Index extends React.Component {
         super(props)
         this.state = {
             list:[],
-            listDetail:[]
+            listDetail:[],
+            isHide:''
         }
     }
     componentDidMount() {
@@ -21,14 +22,18 @@ export default class Index extends React.Component {
             success:function(data) {
                 this.setState({
                     list:data.content.list,
-                    listDetail:data.content.listDetail
+                    listDetail:data.content.listDetail,
+                    isHide:'hide'
                 });
             }.bind(this)
         });
     }
+    componentWillUnmount(){
+
+    }
     render() {
         return (
-            <div>
+            <div isHide={this.state.isHide}>
                 <IndexLink list={this.state.list} listDetail={this.state.listDetail} />
                 <LoadCartoon />
             </div>
