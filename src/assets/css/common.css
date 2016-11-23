@@ -1,0 +1,18 @@
+a,img,button,input,textarea{ -webkit-tap-highlight-color:rgba(255,255,255,0);}
+*{ margin:0; padding:0;}
+li{ list-style:none;}
+img{ border:none;}
+i{font-style:normal}
+s{text-decoration: none}
+a{ text-decoration:none; -webkit-appearance:none;}
+.cl{ zoom:1;}
+.cl:after{ content:""; display:block; clear:both;}
+body{ font-family: Microsoft Yahei,Avenir,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif; }
+#content{position: relative;display: none}
+input,textarea,button{ /*font-family: Microsoft Yahei;*/ resize:none; -webkit-appearance:none; outline:medium;}
+input{ border: none; background: none; width:100%;font-family: Microsoft Yahei,Avenir,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;}
+h1,h2,h3,h4,strong{ font-weight:bold;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{ color: #cecece;}
+input:-moz-placeholder, textarea:-moz-placeholder{ color: #cecece;}
+input[type=button], input[type=submit], input[type=file], button { cursor: pointer; -webkit-appearance: none;}
+.right{float:right}.left{float:left}
