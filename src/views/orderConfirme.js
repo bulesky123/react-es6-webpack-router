@@ -2,18 +2,37 @@
  * Created by zhoufei on 2016/11/22.
  */
 import React from 'react'
+import $ from 'webpack-zepto'
+import Mock from '../assets/mockCtrl/confirmeList'
 export default class OrderConfirme extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            "merchantName":"京东商城gogogogo",
-            "userMobile":"15810638896",
-            "loanTotalAmount":"2000",
-            "loanPeriod":"3",
-            "downPaymentAmount":"100",
-            "createTime":"2016-10-10 10:22",
-            "displayOrderId":"20160918283848328"
+            "merchantName":"",
+            "userMobile":"",
+            "loanTotalAmount":"",
+            "loanPeriod":"",
+            "downPaymentAmount":"",
+            "createTime":"",
+            "displayOrderId":""
         }
+    }
+    componentDidMount() {
+        $.ajax({
+            url:'/order/confirmeList',
+            dataType:'json',
+            success:function(data) {
+                this.setState({
+                    "merchantName":data.merchantName,
+                    "userMobile":data.userMobile,
+                    "loanTotalAmount":data.loanTotalAmount,
+                    "loanPeriod":data.loanPeriod,
+                    "downPaymentAmount":data.downPaymentAmount,
+                    "createTime":data.createTime,
+                    "displayOrderId":data.displayOrderId
+                });
+        }.bind(this)
+        });
     }
     render() {
         return (

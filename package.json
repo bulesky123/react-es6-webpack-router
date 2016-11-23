@@ -38,6 +38,7 @@
     "css-loader": "^0.23.0",
     "cssnext-loader": "^1.0.1",
     "file-loader": "^0.8.4",
+    "webpack-zepto": "0.0.1",
     "webpack-dev-server": "^1.16.2"
   }
 }

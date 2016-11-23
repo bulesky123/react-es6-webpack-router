@@ -2,11 +2,15 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/node_modules/cssnext-loader/node_modules/cssnext/node_modules/postcss-url/node_modules/directory-encoder/node_modules/handlebars/node_modules/uglify-js/node_modules/source-map/node_modules/amdefine/README.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/node_modules/cssnext-loader/node_modules/cssnext/node_modules/to-space-case/node_modules/to-no-case/Makefile" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/node_modules/mockjs" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/assets/js/indexJson.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/assets/js/movie.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/assets/js/orderConfireData.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/assets/mockCtrl/confirmeList.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/assets/mockCtrl/indexList.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/IndexLink.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/components/cell.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/views/index.js" charset="UTF-8" />
