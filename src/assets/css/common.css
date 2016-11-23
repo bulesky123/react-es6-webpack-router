@@ -16,3 +16,145 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{ color: #c
 input:-moz-placeholder, textarea:-moz-placeholder{ color: #cecece;}
 input[type=button], input[type=submit], input[type=file], button { cursor: pointer; -webkit-appearance: none;}
 .right{float:right}.left{float:left}
+/*loading*/
+.loadBg{
+    background: url('../img/loadCartoon.png') 0 -80px no-repeat;
+    width: 90px;
+    height: 50px;
+    margin: 11px auto 0;
+    background-size: cover;
+    animation: loadBg 1s infinite linear;
+    -webkit-animation: loadBg 1s infinite linear;
+    position: relative;
+    z-index: 2;
+}
+.loadCartoon{ position:absolute; top:0; left:0.6rem; animation:loadCartoon 1s linear infinite alternate;-webkit-animation:loadCartoon 1s linear infinite alternate; z-index: 6;}
+.loadHead{
+    background: url('../img/loadCartoon.png') no-repeat;
+    width: 90px;
+    height: 34px;
+    position: absolute;
+    left: 19px;
+    top: 4px;
+    z-index: 9;
+    background-size: cover;
+}
+.loadBody{
+    background: url('../img/loadCartoon.png') 0 -34px no-repeat;
+    width: 90px;
+    height: 15px;
+    position: absolute;
+    left: 19px;
+    top: 32.4px;
+    z-index: 7;
+    background-size: cover;
+}
+.loadDun{
+    background: url('../img/loadCartoon.png') 0 -49px no-repeat;
+    width: 90px;
+    height: 18px;
+    position: absolute;
+    left: 36.4px;
+    top: 34px;
+    z-index: 10;
+    background-size: cover;
+}
+.loadCappa{
+    background: url('../img/loadCartoon.png') 0 -67px no-repeat;
+    width: 90px;
+    height: 11px;
+    position: absolute;
+    left: 46px;
+    top: 28px;
+    z-index: 8;
+    background-size: cover;
+    animation: loadCappa 1s ease-in-out 0s infinite;
+    -webkit-animation: loadCappa 1s ease-in-out 0s infinite;
+    transform-origin: 0px 5px 20px;
+    -webkit-transform-origin: 0px 5px 20px;
+}
+.loadCon{
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 4;
+}
+.backcolor{ position: absolute; top:0; left:0; width:100%; height:100%; background: #333; opacity:0.8; filter:alpha(opacity=80); border-radius:5%; -webkit-border-radius:5%;}
+.backcolornone{opacity: 0}
+.loadBlock {
+    width: 104px;
+    height: 84px;
+    position: fixed;
+    top: 36%;
+    left: 50%;
+    margin-left: -52px;
+    text-align: center;
+    z-index: 999;
+    overflow: hidden;
+}
+.loadBlockPart{
+    width: 104px;
+    height: 84px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    margin: 110px auto;
+    top:0;
+    left:0;
+}
+.loadPart{
+    width: 160px;
+    height: 112px;
+}
+.loadPart .loadBg{
+    background: url('../img/loadCartoon_index.png') 0 -122px no-repeat;
+    background-size: cover;
+    width: 102.5px;
+    height: 79px;
+    margin: 14px auto 0;
+}
+.loadPart .loadHead {
+    background: url('../img/loadCartoon_index.png') no-repeat;
+    background-size: cover;
+    width: 102.5px;
+    height: 52.5px;
+    top: 10px;
+    left: 19px;
+}
+.loadPart .loadCartoon{
+    left: 28px;
+}
+.loadPart .loadBody {
+    background: url('../img/loadCartoon_index.png') 0 -52.5px no-repeat;
+    background-size: cover;
+    width: 102.5px;
+    height: 24px;
+    left: 19px;
+    top: 53.6px;
+}
+.loadPart .loadDun {
+    background: url('../img/loadCartoon_index.png') 0 -76.5px no-repeat;
+    background-size: cover;
+    width: 102.5px;
+    height: 27.5px;
+    left: 50px;
+    top: 54px;
+}
+.loadPart .loadCappa {
+    background: url('../img/loadCartoon_index.png') 0 -104px no-repeat;
+    background-size: cover;
+    width: 102.5px;
+    height: 17px;
+    left: 60px;
+    top: 44px;
+}
+
+@keyframes loadBg {0%{ left:-5.2rem;} 99.99%{ left:5.2rem;} 100%{ left:-5.2rem;} }
+@-webkit-keyframes loadBg {0%{ left:-5.2rem;} 99.99%{ left:5.2rem;} 100%{ left:-5.2rem;} }
+@keyframes loadCartoon {0%{ top:0.4rem;} 50%{ top:0rem;} 100%{ top:0.4rem;} }
+@-webkit-keyframes loadCartoon {0%{ top:0.4rem;}50%{ top:0rem;}100%{ top:0.4rem;} }
+@keyframes loadCappa {0%{ transform:rotate(0deg); -webkit-transform:rotate(0deg);}50%{ transform:rotate(18deg); -webkit-transform:rotate(18deg);} 100%{ transform:rotate(0deg); -webkit-transform:rotate(0deg);} }
+@-webkit-keyframes loadCappa {0%{ transform:rotate(0deg); -webkit-transform:rotate(0deg);} 50%{ transform:rotate(18deg); -webkit-transform:rotate(18deg);} 100%{ transform:rotate(0deg); -webkit-transform:rotate(0deg);} }

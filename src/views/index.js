@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import IndexLink from '../components/IndexLink.js';
+import LoadCartoon from  '../components/loadCartoon.js'
 import $ from 'webpack-zepto'
 import Mock from '../assets/mockCtrl/indexList'
 export default class Index extends React.Component {
@@ -27,7 +28,10 @@ export default class Index extends React.Component {
     }
     render() {
         return (
-            <IndexLink list={this.state.list} listDetail={this.state.listDetail} />
+            <div>
+                <IndexLink list={this.state.list} listDetail={this.state.listDetail} />
+                <LoadCartoon />
+            </div>
         )
     }
 }
