@@ -28,7 +28,7 @@ export default class Index extends React.Component {
                         loadIsHide:'hide',
                         contentIsHide:''
                     })
-                }.bind(this),2000)
+                }.bind(this),1000)
             }.bind(this)
         });
     }
