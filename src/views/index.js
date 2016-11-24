@@ -12,7 +12,8 @@ export default class Index extends React.Component {
         this.state = {
             list:[],
             listDetail:[],
-            isHide:''
+            loadIsHide:'',
+            contentIsHide:'hide'
         }
     }
     componentDidMount() {
@@ -20,22 +21,22 @@ export default class Index extends React.Component {
             url:'index/indexList',
             dataType:'json',
             success:function(data) {
-                this.setState({
-                    list:data.content.list,
-                    listDetail:data.content.listDetail,
-                    isHide:'hide'
-                });
+                setTimeout(function(){
+                    this.setState({
+                        list:data.content.list,
+                        listDetail:data.content.listDetail,
+                        loadIsHide:'hide',
+                        contentIsHide:''
+                    })
+                }.bind(this),2000)
             }.bind(this)
         });
     }
-    componentWillUnmount(){
-
-    }
     render() {
         return (
-            <div isHide={this.state.isHide}>
-                <IndexLink list={this.state.list} listDetail={this.state.listDetail} />
-                <LoadCartoon />
+            <div>
+                <IndexLink contentIsHide={this.state.contentIsHide} list={this.state.list} listDetail={this.state.listDetail} />
+                <LoadCartoon loadIsHide={this.state.loadIsHide} />
             </div>
         )
     }
