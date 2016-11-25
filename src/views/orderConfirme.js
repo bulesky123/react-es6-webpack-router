@@ -17,7 +17,8 @@ export default class OrderConfirme extends React.Component {
             "loanPeriod":"",
             "downPaymentAmount":"",
             "createTime":"",
-            "displayOrderId":""
+            "displayOrderId":"",
+            agreeClassName:''
         }
     }
     componentDidMount() {
@@ -41,6 +42,17 @@ export default class OrderConfirme extends React.Component {
             }.bind(this)
         });
     }
+    handleSubmitClick() {
+        this.setState({
+            agreeClassName:'active'
+        })
+        alert("submintFun")
+    }
+    handleAgreeCLick() {
+        this.setState({
+            agreeClassName:this.state.agreeClassName ? '' :'active'
+        })
+    }
     render() {
         return (
             <div>
@@ -56,11 +68,11 @@ export default class OrderConfirme extends React.Component {
                         <p><span>{this.state.displayOrderId}</span><span>订单编号：</span></p>
                     </div>
                     <div className="agreementBox">
-                        <p><span className="agree" agree="0"></span>同意<a href="/#index">《商户协议》</a></p>
+                        <p><span onClick={this.handleAgreeCLick.bind(this)} className={this.state.agreeClassName+" agree"} agree="0"></span>同意<a href="/#index">《商户协议》</a></p>
                         <p>确认订单视为阅读并同意《商户协议》</p>
                     </div>
                     <div className="bottonBox">
-                        <p className="comfireBtn">确认订单</p>
+                        <p className="comfireBtn" onClick={this.handleSubmitClick.bind(this)}>确认订单</p>
                     </div>
                 </div>
                 <LoadCartoon loadIsHide={this.state.loadIsHide} />

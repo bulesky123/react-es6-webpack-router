@@ -35,7 +35,7 @@ export default class Index extends React.Component {
     render() {
         return (
             <div>
-                <IndexLink contentIsHide={this.state.contentIsHide} list={this.state.list} listDetail={this.state.listDetail} />
+                <IndexLink  contentIsHide={this.state.contentIsHide} list={this.state.list} listDetail={this.state.listDetail} />
                 <LoadCartoon loadIsHide={this.state.loadIsHide} />
             </div>
         )

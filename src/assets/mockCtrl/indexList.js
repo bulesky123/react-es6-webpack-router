@@ -28,6 +28,8 @@ export default (function() {
                 nowTime: '2016-11-23',
                 sh_money: '1000.00',
                 xj_money: '2000.00',
+                data_arr:[0.1,0.9],
+                color_arr:["#090","#ccc"],
                 sh_percent: '10%',
                 xj_percent: '90%'
             }, {
@@ -36,6 +38,8 @@ export default (function() {
                 nowTime: '2016-11-23',
                 sh_money: '2笔',
                 xj_money: '3笔',
+                data_arr:[0.1,0.9],
+                color_arr:["#090","#ccc"],
                 sh_percent: '10%',
                 xj_percent: '90%'
             }]
