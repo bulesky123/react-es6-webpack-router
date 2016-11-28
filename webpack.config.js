@@ -57,11 +57,7 @@ module.exports = {
         new ExtractTextPlugin("style.css", {
             allChunks: true,
             disable: false
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"development"'
-        }),
-        new webpack.HotModuleReplacementPlugin()
+        })
     ],
     devtool: '#source-map'
 };
