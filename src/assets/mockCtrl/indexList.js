@@ -19,7 +19,7 @@ export default (function() {
                 hash: '#myAccount'
             }, {
                 src: '../../src/assets/img/sh_home_ewm.png',
-                title: '我的二维码',
+                title: '生命周期',
                 hash: '#myCode'
             }],
             listDetail: [{

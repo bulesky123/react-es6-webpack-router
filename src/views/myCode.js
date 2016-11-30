@@ -33,7 +33,7 @@ export default class Cmount extends React.Component{
                     <li>2、componentDidUpdate  更新后 </li>
                 </ul>
                 <div>
-                    <input type="text" className={this.state.enable ? "bgColor" : ""} disabled={this.state.enable} />
+                    <input type="text" value={this.state.enable ? "disable" : "enable"} className={this.state.enable ? "bgColor" : ""} disabled={this.state.enable} />
                     <button onClick={this.handleClick.bind(this)}>改变state</button>
                 </div>
             </div>
