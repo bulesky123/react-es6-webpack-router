@@ -25,3 +25,10 @@ componentWillReceiveProps(object nextProps) ：已加载组件收到新的参数时调用
 
 
 shouldComponentUpdate(object nextProps, object nextState) ：组件判断是否重新渲染时调用
+
+
+学习react 遇到的问题
+1、怎么操作dom
+2、怎样做tap菜单
+3、react-router 怎么传参数，怎么取参数
+4、怎么使用canvas画图表

@@ -3,13 +3,17 @@
  */
 
 import React from 'react'
+import {Link} from 'react-router'
 import Order from '../components/order'
 import Mock from '../assets/mockCtrl/orderList'
 import $ from 'webpack-zepto'
+import LoadCartoon from  '../components/loadCartoon.js'
 export default class OrderList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            loadIsHide:'',
+            contentIsHide:'hide',
             orderList:[],
             selected:false
         }
@@ -19,10 +23,14 @@ export default class OrderList extends React.Component {
                 url:'order/orderList',
                 dataType:'json',
                 success:function(data){
-                    this.setState({
+                    setTimeout(function(){
+                        this.setState({
+                        loadIsHide:'hide',
+                        contentIsHide:'',
                         orderList:data.content.orderList
-                    })
-                }.bind(this)
+                    });
+                }.bind(this),1000)
+    }.bind(this)
         })
     }
     handleClick() {
@@ -45,6 +53,7 @@ export default class OrderList extends React.Component {
                     <span onClick={this.handleClick.bind(this)} className={(this.state.selected ? "" : "selected ") +" tab js_all"}>全部</span>
                 </header>
                 <Order orderList={this.state.orderList} />
+                <LoadCartoon loadIsHide={this.state.loadIsHide} />
             </div>
         );
     }

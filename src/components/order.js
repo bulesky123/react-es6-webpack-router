@@ -2,6 +2,7 @@
  * Created by zhoufei on 2016/11/25.
  */
 import React from 'react'
+import {Link} from 'react-router'
 export default class Order extends React.Component{
     constructor(props) {
         super(props)
@@ -9,11 +10,15 @@ export default class Order extends React.Component{
 
         }
     }
+    handleClick(orderGid) {
+        location.hash="orderDetail/"+orderGid;
+    }
     render() {
             return (
                 <div className="orderBox">
                 {
                   this.props.orderList.map((item,i)=>
+                  <Link to={`/MyorderDetail/${item.orderGid}`}>
                         <div className="item1">
                             <div className="itemTitle1">
                                 <div>{item.stateName==1 ? "待结算" : "已结算"}</div>
@@ -34,6 +39,7 @@ export default class Order extends React.Component{
                                 </div>
                             </div>
                         </div>
+                  </Link>
                     )
                 }
               </div>

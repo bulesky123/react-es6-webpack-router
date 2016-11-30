@@ -9,11 +9,12 @@ require('./assets/css/reset.css');
 require('./assets/css/common.css');
 
 //引入相应的（每个页面对应的）js
-import myIndex from './views/index.js';
-import myCode from './views/myCode.js';
-import myOrderConfirme from './views/orderConfirme.js';
-import myOrderList from './views/orderList.js';
-import mySurname from './views/surname.js';
+import myIndex from './views/index';
+import myCode from './views/myCode';
+import myOrderConfirme from './views/orderConfirme';
+import myOrderList from './views/orderList';
+import mySurname from './views/surname';
+import MyorderDetail from './views/myorderDetail'
 // 配置导航
 class Banner extends React.Component {
     constructor(props) {
@@ -22,7 +23,6 @@ class Banner extends React.Component {
             current: ''
         }
     }
-
     render() {
         return (
             <div>
@@ -41,6 +41,7 @@ render((
             <Route path="myOrderConfirme"  component={myOrderConfirme} />
             <Route path="myOrderList"  component={myOrderList} />
             <Route path="mySurname"  component={mySurname} />
+            <Route path="/MyorderDetail/:orderGid" component={MyorderDetail}/>
         </Route>
     </Router>
 ), document.getElementById('app'));

@@ -3,7 +3,7 @@ var fs=require('fs');
 var webpack=require('webpack');
 var baseurl=path.resolve(process.cwd(),'src');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-//±àÒëÊä³öÂ·¾¶
+//ç¼–è¯‘è¾“å‡ºè·¯å¾„
 module.exports = {
     debug: false,
     entry: genEntries(),
@@ -47,13 +47,13 @@ module.exports = {
         presets: ['es2015', 'stage-0', 'react']
     },
     resolve: {
-        // requireÊ±Ê¡ÂÔµÄÀ©Õ¹Ãû£¬Èç£ºrequire('module') ²»ĞèÒªmodule.js
+        // requireæ—¶çœç•¥çš„æ‰©å±•åï¼Œå¦‚ï¼šrequire('module') ä¸éœ€è¦module.js
         extension: ['', '.js']
     },
     plugins: [
-        //Ìá¹«ÓÃjsµ½common.jsÎÄ¼şÖĞ
+        //æå…¬ç”¨jsåˆ°common.jsæ–‡ä»¶ä¸­
         new webpack.optimize.CommonsChunkPlugin('common.js'),
-        //½«ÑùÊ½Í³Ò»·¢²¼µ½style.cssÖĞ
+        //å°†æ ·å¼ç»Ÿä¸€å‘å¸ƒåˆ°style.cssä¸­
         new ExtractTextPlugin("style.css", {
             allChunks: true,
             disable: false
