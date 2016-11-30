@@ -10,30 +10,6 @@ export default class IndexLink extends React.Component {
 
         }
     }
-    handleClick(hash) {
-        location.hash=hash
-    }
-    drawCircle(data_arr, color_arr){
-        let c=document.createElement('canvas');
-        c.style.width='71px';
-        c.style.height='71px';
-        let ctx = c.getContext("2d");
-        let radius = c.height / 2; //半径
-        let ox = radius, oy = radius; //圆心
-        let startAngle = 0; //起始弧度
-        let endAngle = 0;   //结束弧度
-        for (var i = 0; i < data_arr.length; i++) {
-            //绘制饼图
-            endAngle = endAngle + data_arr[i] * Math.PI * 2; //结束弧度
-            ctx.fillStyle = color_arr[i];
-            ctx.beginPath();
-            ctx.moveTo(ox, oy); //移动到到圆心
-            ctx.arc(ox, oy, radius, startAngle, endAngle, false);
-            ctx.closePath();
-            ctx.fill();
-            startAngle = endAngle; //设置起始弧度
-        }
-    }
     render() {
         return (
             <div className={this.props.contentIsHide+" content"}>
@@ -41,10 +17,12 @@ export default class IndexLink extends React.Component {
                     <ul className="icon_list">
                         {
                             this.props.list.map((item,i)=>
-                                <li onClick={this.handleClick.bind(this,item.hash)}>
-                                    <a href="javascript:void(0)"><img src={item.src} alt="sh_home_gl"/></a>
-                                    <a href="javascript:void(0)" className="icon_name">{item.title}</a>
-                                </li>
+                                <Link to={item.hash}>
+                                    <li>
+                                        <span href="javascript:void(0)"><img src={item.src} alt="sh_home_gl"/></span>
+                                        <span href="javascript:void(0)" className="icon_name">{item.title}</span>
+                                    </li>
+                                </Link>
                             )
                         }
                     </ul>
@@ -60,7 +38,7 @@ export default class IndexLink extends React.Component {
                             <div className="itemContent">
                                 <div>
                                     <div className="canvasBox">
-                                        <canvas id={i} width="71" height="71" onLoad={this.drawCircle(item.data_arr, item.color_arr)}></canvas>
+
                                     </div>
                                     <div className="canvasIcon">
                                         <p><span></span><i>{item.sh_percent}</i><span></span><i>{item.xj_percent}</i></p>

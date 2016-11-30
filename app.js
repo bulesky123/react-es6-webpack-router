@@ -54,7 +54,7 @@ app.post('/api/sentdata', function(req, res) {
         });
     });
 });
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3001));
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));

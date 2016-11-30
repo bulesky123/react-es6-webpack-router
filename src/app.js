@@ -13,7 +13,7 @@ import myIndex from './views/index.js';
 import myCode from './views/myCode.js';
 import myOrderConfirme from './views/orderConfirme.js';
 import myOrderList from './views/orderList.js';
-import myAccount from './views/myacount.js';
+import mySurname from './views/surname.js';
 // 配置导航
 class Banner extends React.Component {
     constructor(props) {
@@ -40,7 +40,7 @@ render((
             <Route path="myCode"  component={myCode} />
             <Route path="myOrderConfirme"  component={myOrderConfirme} />
             <Route path="myOrderList"  component={myOrderList} />
-            <Route path="myAccount"  component={myAccount} />
+            <Route path="mySurname"  component={mySurname} />
         </Route>
     </Router>
 ), document.getElementById('app'));

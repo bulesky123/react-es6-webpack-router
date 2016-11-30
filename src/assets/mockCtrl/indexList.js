@@ -7,20 +7,20 @@ export default (function() {
         content:{
             list: [{
                 src: '../../src/assets/img/sh_home_qr.png',
-                title: '订单确认',
-                hash: '#myOrderConfirme'
+                title: '确认订单',
+                hash: 'myOrderConfirme'
             }, {
                 src: '../../src/assets/img/sh_home_gl.png',
                 title: '订单管理',
-                hash: '#myOrderList'
+                hash: 'myOrderList'
             }, {
                 src: '../../src/assets/img/sh_home_tq.png',
-                title: '提取货款',
-                hash: '#myAccount'
+                title: '表单提交',
+                hash: 'mySurname'
             }, {
                 src: '../../src/assets/img/sh_home_ewm.png',
                 title: '生命周期',
-                hash: '#myCode'
+                hash: 'myCode'
             }],
             listDetail: [{
                 icon: 'icon1',
