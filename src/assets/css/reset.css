@@ -372,3 +372,34 @@ header span.selected{
     color:#959595;
     margin-top: 4px;
 }
+/*ÎÒµÄ¶þÎ¬Âë*/
+.lifeCycle{
+    padding:35px;
+}
+.lifeCycle h3{
+    text-align:center;
+    padding-bottom:30px;
+}
+.lifeCycle p{
+    font-size:15px;
+}
+.lifeCycle li{
+    line-height:35px;
+    font-size:14px;
+}
+.lifeCycle input{
+    border:1px solid #ccc;
+    width:50%;
+    height:30px;
+}
+.lifeCycle button{
+    height:30px;
+    background:#4c6ed2;
+    border-radius:4px;
+    border:none;
+    margin-left: 20px;
+    width: 80px;
+}
+.lifeCycle .bgColor{
+    background:#ccc;
+}

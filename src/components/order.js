@@ -16,7 +16,7 @@ export default class Order extends React.Component{
                   this.props.orderList.map((item,i)=>
                         <div className="item1">
                             <div className="itemTitle1">
-                                <div>{item.stateName}</div>
+                                <div>{item.stateName==1 ? "待结算" : "已结算"}</div>
                                 <p>{item.createTime}</p>
                             </div>
                             <div className="itemContent1">
@@ -25,7 +25,7 @@ export default class Order extends React.Component{
                                     <p className="secound">分期金额(元)</p>
                                 </div>
                                 <div className="type">
-                                    <p className="first">{item.type}</p>
+                                    <p className="first">{item.type==1? "商品贷" : "现金贷"}</p>
                                     <p className="secound">交易类型</p>
                                 </div>
                                 <div className="number">

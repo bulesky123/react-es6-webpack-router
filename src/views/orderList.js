@@ -11,7 +11,7 @@ export default class OrderList extends React.Component {
         super(props)
         this.state = {
             orderList:[],
-            selected:''
+            selected:false
         }
     }
     componentDidMount() {
@@ -26,14 +26,13 @@ export default class OrderList extends React.Component {
         })
     }
     handleClick() {
-        console.log(this);
         $.ajax({
             url:'order/orderList',
             dataType:'json',
             success:function(data){
                 this.setState({
                     orderList:data.content.orderList,
-                    selected:this.state.selected ? '' : 'selected'
+                    selected:!this.state.selected
                 })
             }.bind(this)
         });
@@ -42,8 +41,8 @@ export default class OrderList extends React.Component {
         return (
             <div url="order/orderList">
                 <header>
-                    <span onClick={this.handleClick.bind(this)} className=" tab right js_section">待结算订单</span>
-                    <span onClick={this.handleClick.bind(this)} className={this.state.selected+" tab js_all"}>全部</span>
+                    <span onClick={this.handleClick.bind(this)} className={(this.state.selected ? "selected " : "") +"tab right js_section"}>待结算订单</span>
+                    <span onClick={this.handleClick.bind(this)} className={(this.state.selected ? "" : "selected ") +" tab js_all"}>全部</span>
                 </header>
                 <Order orderList={this.state.orderList} />
             </div>

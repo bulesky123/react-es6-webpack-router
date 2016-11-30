@@ -44,9 +44,12 @@ export default class OrderConfirme extends React.Component {
     }
     handleSubmitClick() {
         this.setState({
+            loadIsHide:'',
             agreeClassName:'active'
         })
-        alert("submintFun")
+        setTimeout(function(){
+            location.hash='myOrderList'
+        },1000)
     }
     handleAgreeCLick() {
         this.setState({
