@@ -18,11 +18,9 @@ class StudentScoreTable extends React.Component{
             url:'order/tableDate',
             dataType:'json',
             success:function(data){
-                setTimeout(function(){
                     this.setState({
                         data:data.content.orderList
                     });
-                }.bind(this),1000)
             }.bind(this)
         })
     }
@@ -34,9 +32,9 @@ class StudentScoreTable extends React.Component{
     }
     render(){
         return (
-            <div>
-                <GenderFilter onGenderChange={this.onGenderChange.bind(this)} genderFilter={this.state.genderFilter}/>
+            <div className="boxPadding">
                 <NameFilter onNameChange={this.onNameChange.bind(this)} nameFilter={this.state.nameFilter}/>
+                <GenderFilter onGenderChange={this.onGenderChange.bind(this)} genderFilter={this.state.genderFilter}/>
                 <ScoreTable scoreNotes={this.state.data} genderFilter={this.state.genderFilter} nameFilter={this.state.nameFilter} />
             </div>
         );
@@ -49,15 +47,15 @@ class GenderFilter extends React.Component{
     }
     render () {
         return (
-            <div className="condition-item">
+            <div className="condition-item left sex">
                 <label>
-                    <span>按性别筛选</span>
-                    <select onChange={this.genderChangeHandler.bind(this)} ref="genderFilter">
-                        <option value="0">All</option>
-                        <option value="1">男生</option>
-                        <option value="2">女生</option>
-                    </select>
+                    <span>按性别筛选:</span>
                 </label>
+                <select onChange={this.genderChangeHandler.bind(this)} ref="genderFilter">
+                    <option value="0">All</option>
+                    <option value="1">男生</option>
+                    <option value="2">女生</option>
+                </select>
             </div>
         );
     }
@@ -69,11 +67,11 @@ class NameFilter extends React.Component{
     }
     render () {
         return (
-            <div className="condition-item">
+            <div className="condition-item right name">
                 <label>
-                    <span>按姓名筛选</span>
-                    <input type="text" ref="nameFilter" onChange={this.nameChangeHandler.bind(this)} value={this.props.nameFilter}/>
+                    <span>按姓名筛选:</span>
                 </label>
+                <input type="text" ref="nameFilter" onChange={this.nameChangeHandler.bind(this)} value={this.props.nameFilter}/>
             </div>
         );
     }
@@ -109,7 +107,7 @@ class ScoreTable extends React.Component{
             scoreNotes.push(<ScoreItem score={scoreItem} />);
         });
         return (
-            <table>
+            <table className="detailDialog">
                 <thead>
                 <tr>
                     <th>姓名</th>
@@ -144,11 +142,12 @@ export default class Table extends React.Component{
     constructor(props){
         super(props);
         this.state={
+
         }
     }
     render() {
         return (
-            <StudentScoreTable />
+                <StudentScoreTable />
         )
     }
 }
