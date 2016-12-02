@@ -30,17 +30,32 @@ class StudentScoreTable extends React.Component{
     onNameChange(name) {
         this.setState({nameFilter: name});
     }
+    onDeleteScoreItem(id){
+        const fanilData=[];
+        this.state.data.map(function(item){
+            if(item._id!=id) {
+                fanilData.push(item);
+            }
+        });
+        this.setState({data:fanilData})
+    }
     render(){
         return (
             <div className="boxPadding">
                 <NameFilter onNameChange={this.onNameChange.bind(this)} nameFilter={this.state.nameFilter}/>
                 <GenderFilter onGenderChange={this.onGenderChange.bind(this)} genderFilter={this.state.genderFilter}/>
-                <ScoreTable scoreNotes={this.state.data} genderFilter={this.state.genderFilter} nameFilter={this.state.nameFilter} />
+                <div className="addBox"><button className="addBtn">添加记录</button></div>
+                <ScoreTable deleteScoreItem={this.onDeleteScoreItem.bind(this)} scoreNotes={this.state.data} genderFilter={this.state.genderFilter} nameFilter={this.state.nameFilter} />
+                <AddScoreItem />
             </div>
         );
     }
 };
-
+class AddScoreItem extends React.Component{
+    render () {
+        return (<div></div>)
+    }
+}
 class GenderFilter extends React.Component{
     genderChangeHandler() {
         this.props.onGenderChange(this.refs.genderFilter.value);
@@ -77,6 +92,9 @@ class NameFilter extends React.Component{
     }
 };
 class ScoreTable extends React.Component{
+    deleteItemHandler(id){
+       this.props.deleteScoreItem(id);
+    }
     render () {
         var scoreNotes = [];
         var genderFilter =+ this.props.genderFilter,
@@ -86,26 +104,26 @@ class ScoreTable extends React.Component{
             if (genderFilter !== 0 && nameFilter === '') {
                 // 仅genderfilter生效
                 if (GENDER[genderFilter] === scoreItem.gender) {
-                    scoreNotes.push(<ScoreItem score={scoreItem}/>);
+                    scoreNotes.push(<ScoreItem onDelete={this.deleteItemHandler.bind(this)} score={scoreItem}/>);
                 }
                 return;
             }
             if (genderFilter === 0 && nameFilter !== '') {
                 // 仅nameFilter生效
                 if (scoreItem.name === nameFilter) {
-                    scoreNotes.push(<ScoreItem score={scoreItem} />);
+                    scoreNotes.push(<ScoreItem onDelete={this.deleteItemHandler.bind(this)} score={scoreItem} />);
                 }
                 return;
             }
             if (genderFilter !== 0 && nameFilter !== '') {
                 // 两个filter都生效
                 if (GENDER[genderFilter] === scoreItem.gender && scoreItem.name === nameFilter) {
-                    scoreNotes.push(<ScoreItem score={scoreItem}/>);
+                    scoreNotes.push(<ScoreItem onDelete={this.deleteItemHandler.bind(this)} score={scoreItem}/>);
                 }
                 return;
             }
-            scoreNotes.push(<ScoreItem score={scoreItem} />);
-        });
+            scoreNotes.push(<ScoreItem onDelete={this.deleteItemHandler.bind(this)} score={scoreItem} />);
+        }.bind(this));
         return (
             <table className="detailDialog">
                 <thead>
@@ -125,6 +143,9 @@ class ScoreTable extends React.Component{
     }
 };
 class ScoreItem extends React.Component{
+    handleClick(){
+        this.props.onDelete(this.props.score._id);
+    }
     render() {
         var score = this.props.score;
         return (
@@ -133,7 +154,7 @@ class ScoreItem extends React.Component{
                 <td>{score.gender}</td>
                 <td>{score.chinese}</td>
                 <td>{score.math}</td>
-                <td><span className="trigger" >修改</span><span className="trigger">删除</span></td>
+                <td><span className="trigger">修改</span><span onClick={this.handleClick.bind(this)} className="trigger">删除</span></td>
             </tr>
         );
     }

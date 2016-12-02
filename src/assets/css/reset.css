@@ -384,7 +384,7 @@ header span.selected{
     color:#959595;
     margin-top: 4px;
 }
-/*ÎÒµÄ¶þÎ¬Âë*/
+/*ï¿½ÒµÄ¶ï¿½Î¬ï¿½ï¿½*/
 .lifeCycle{
     padding:35px;
 }
@@ -415,7 +415,7 @@ header span.selected{
 .lifeCycle .bgColor{
     background:#ccc;
 }
-/*ÊµÃûÈÏÖ¤*/
+/*Êµï¿½ï¿½ï¿½ï¿½Ö¤*/
 .title{
     height: 44px;
     line-height: 44px;
@@ -496,9 +496,9 @@ header span.selected{
     margin-top: 50px;
     height: 44px;
 }
-/*ÏêÇé*/
+/*ï¿½ï¿½ï¿½ï¿½*/
 .boxPadding{
-    padding:0 10px;
+    padding:0 10px 20px 10px;
     color:#666;
 }
 .condition-item{
@@ -513,7 +513,7 @@ header span.selected{
     display:inline-block;
 }
 .sex{
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 .condition-item select{
     height:30px;
@@ -554,4 +554,22 @@ header span.selected{
     height: 45px;
     border: 1px solid #dedfe0;
     text-align: center;
+}
+.trigger{
+    color:#4c6ed2;
+}
+.trigger:first-child{
+    display: inline-block;
+    margin-right: 10px;
+}
+.addBox{
+    clear: both;
+}
+.addBtn{
+    height: 30px;
+    background: #4c6ed2;
+    border-radius: 4px;
+    border: none;
+    color:#fff;
+    width: 80px;
 }
