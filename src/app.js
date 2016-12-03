@@ -7,7 +7,7 @@ import { Router, Route, Link, hashHistory, browserHistory, IndexRoute, Redirect,
 //引入相应的css
 require('./assets/css/reset.css');
 require('./assets/css/common.css');
-
+require('./assets/css/dialog.css');
 //引入相应的（每个页面对应的）js
 import myIndex from './views/index';
 import myCode from './views/myCode';

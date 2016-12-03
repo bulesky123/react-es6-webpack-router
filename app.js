@@ -64,7 +64,16 @@ app.get(/^(\/\w+)*\/(\w+)\.(png|gif|jpg)(\?\S*)?$/, function(req, res) {
     var url = req.url;
     res.sendFile(path.join(__dirname,url ));
 });
-
+//监听每个页面
+app.get(/^(\/\w+)*\/(\w+)\.html(\?\S*)?$/, function(req, res) {
+    var url = req.url;
+    res.sendFile(path.join(__dirname,url ));
+});
+//样式
+app.get(/^(\/\w+)*\/(\w+)\.css(\?\S*)?$/, function(req, res) {
+    var url = req.url;
+    res.sendFile(path.join(__dirname,url ));
+});
 app.listen(app.get('port'), function() {
     console.log('Server started: http://localhost:' + app.get('port'));
 });

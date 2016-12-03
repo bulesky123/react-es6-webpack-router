@@ -37,9 +37,13 @@ webpackJsonp([0,1],[
 	
 	var _orderList2 = _interopRequireDefault(_orderList);
 	
-	var _myacount = __webpack_require__(235);
+	var _surname = __webpack_require__(235);
 	
-	var _myacount2 = _interopRequireDefault(_myacount);
+	var _surname2 = _interopRequireDefault(_surname);
+	
+	var _myorderDetail = __webpack_require__(237);
+	
+	var _myorderDetail2 = _interopRequireDefault(_myorderDetail);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -52,8 +56,8 @@ webpackJsonp([0,1],[
 	
 	
 	//引入相应的css
-	__webpack_require__(236);
-	__webpack_require__(237);
+	__webpack_require__(240);
+	__webpack_require__(241);
 	
 	//引入相应的（每个页面对应的）js
 	
@@ -99,7 +103,8 @@ webpackJsonp([0,1],[
 	        _react2.default.createElement(_reactRouter.Route, { path: 'myCode', component: _myCode2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'myOrderConfirme', component: _orderConfirme2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'myOrderList', component: _orderList2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: 'myAccount', component: _myacount2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: 'mySurname', component: _surname2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/MyorderDetail/:orderGid', component: _myorderDetail2.default })
 	    )
 	), document.getElementById('app'));
 
@@ -25544,7 +25549,7 @@ webpackJsonp([0,1],[
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -25582,119 +25587,88 @@ webpackJsonp([0,1],[
 	    }
 	
 	    _createClass(IndexLink, [{
-	        key: 'handleClick',
-	        value: function handleClick(hash) {
-	            location.hash = hash;
-	        }
-	    }, {
-	        key: 'drawCircle',
-	        value: function drawCircle(data_arr, color_arr) {
-	            var c = document.createElement('canvas');
-	            c.style.width = '71px';
-	            c.style.height = '71px';
-	            var ctx = c.getContext("2d");
-	            var radius = c.height / 2; //半径
-	            var ox = radius,
-	                oy = radius; //圆心
-	            var startAngle = 0; //起始弧度
-	            var endAngle = 0; //结束弧度
-	            for (var i = 0; i < data_arr.length; i++) {
-	                //绘制饼图
-	                endAngle = endAngle + data_arr[i] * Math.PI * 2; //结束弧度
-	                ctx.fillStyle = color_arr[i];
-	                ctx.beginPath();
-	                ctx.moveTo(ox, oy); //移动到到圆心
-	                ctx.arc(ox, oy, radius, startAngle, endAngle, false);
-	                ctx.closePath();
-	                ctx.fill();
-	                startAngle = endAngle; //设置起始弧度
-	            }
-	        }
-	    }, {
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
-	            var _this2 = this;
-	
 	            return _react2.default.createElement(
-	                'div',
+	                "div",
 	                { className: this.props.contentIsHide + " content" },
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'headerBox' },
+	                    "div",
+	                    { className: "headerBox" },
 	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'icon_list' },
+	                        "ul",
+	                        { className: "icon_list" },
 	                        this.props.list.map(function (item, i) {
 	                            return _react2.default.createElement(
-	                                'li',
-	                                { onClick: _this2.handleClick.bind(_this2, item.hash) },
+	                                _reactRouter.Link,
+	                                { to: item.hash },
 	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: 'javascript:void(0)' },
-	                                    _react2.default.createElement('img', { src: item.src, alt: 'sh_home_gl' })
-	                                ),
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: 'javascript:void(0)', className: 'icon_name' },
-	                                    item.title
+	                                    "li",
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        "span",
+	                                        { href: "javascript:void(0)" },
+	                                        _react2.default.createElement("img", { src: item.src, alt: "sh_home_gl" })
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        "span",
+	                                        { href: "javascript:void(0)", className: "icon_name" },
+	                                        item.title
+	                                    )
 	                                )
 	                            );
 	                        })
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'contentBox' },
+	                    "div",
+	                    { className: "contentBox" },
 	                    this.props.listDetail.map(function (item, i) {
 	                        return _react2.default.createElement(
-	                            'div',
-	                            { className: 'item' },
+	                            "div",
+	                            { className: "item" },
 	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'itemTitle' },
+	                                "div",
+	                                { className: "itemTitle" },
 	                                _react2.default.createElement(
-	                                    'p',
-	                                    { className: 'right' },
-	                                    _react2.default.createElement('span', { className: 'timeIcon' }),
+	                                    "p",
+	                                    { className: "right" },
+	                                    _react2.default.createElement("span", { className: "timeIcon" }),
 	                                    _react2.default.createElement(
-	                                        'i',
+	                                        "i",
 	                                        null,
 	                                        item.nowTime
 	                                    )
 	                                ),
 	                                _react2.default.createElement(
-	                                    'p',
+	                                    "p",
 	                                    null,
-	                                    _react2.default.createElement('span', { className: item.icon }),
+	                                    _react2.default.createElement("span", { className: item.icon }),
 	                                    item.iconTitle
 	                                )
 	                            ),
 	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'itemContent' },
+	                                "div",
+	                                { className: "itemContent" },
 	                                _react2.default.createElement(
-	                                    'div',
+	                                    "div",
 	                                    null,
+	                                    _react2.default.createElement("div", { className: "canvasBox" }),
 	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'canvasBox' },
-	                                        _react2.default.createElement('canvas', { id: i, width: '71', height: '71', onLoad: _this2.drawCircle(item.data_arr, item.color_arr) })
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'div',
-	                                        { className: 'canvasIcon' },
+	                                        "div",
+	                                        { className: "canvasIcon" },
 	                                        _react2.default.createElement(
-	                                            'p',
+	                                            "p",
 	                                            null,
-	                                            _react2.default.createElement('span', null),
+	                                            _react2.default.createElement("span", null),
 	                                            _react2.default.createElement(
-	                                                'i',
+	                                                "i",
 	                                                null,
 	                                                item.sh_percent
 	                                            ),
-	                                            _react2.default.createElement('span', null),
+	                                            _react2.default.createElement("span", null),
 	                                            _react2.default.createElement(
-	                                                'i',
+	                                                "i",
 	                                                null,
 	                                                item.xj_percent
 	                                            )
@@ -25702,51 +25676,51 @@ webpackJsonp([0,1],[
 	                                    )
 	                                ),
 	                                _react2.default.createElement(
-	                                    'div',
+	                                    "div",
 	                                    null,
 	                                    _react2.default.createElement(
-	                                        'p',
+	                                        "p",
 	                                        null,
-	                                        _react2.default.createElement('span', { className: 'spanIcon' }),
-	                                        '\u5546\u54C1\u8D37\u6B3E'
+	                                        _react2.default.createElement("span", { className: "spanIcon" }),
+	                                        "\u5546\u54C1\u8D37\u6B3E"
 	                                    ),
 	                                    _react2.default.createElement(
-	                                        'p',
+	                                        "p",
 	                                        null,
 	                                        _react2.default.createElement(
-	                                            'span',
+	                                            "span",
 	                                            null,
-	                                            '\uFFE5'
+	                                            "\uFFE5"
 	                                        ),
 	                                        _react2.default.createElement(
-	                                            'span',
+	                                            "span",
 	                                            null,
 	                                            _react2.default.createElement(
-	                                                'i',
+	                                                "i",
 	                                                null,
 	                                                item.sh_money
 	                                            )
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
-	                                        'p',
+	                                        "p",
 	                                        null,
-	                                        _react2.default.createElement('span', { className: 'spanIcon spanIcon1' }),
-	                                        '\u73B0\u91D1\u8D37\u6B3E'
+	                                        _react2.default.createElement("span", { className: "spanIcon spanIcon1" }),
+	                                        "\u73B0\u91D1\u8D37\u6B3E"
 	                                    ),
 	                                    _react2.default.createElement(
-	                                        'p',
+	                                        "p",
 	                                        null,
 	                                        _react2.default.createElement(
-	                                            'span',
+	                                            "span",
 	                                            null,
-	                                            '\uFFE5'
+	                                            "\uFFE5"
 	                                        ),
 	                                        _react2.default.createElement(
-	                                            'span',
+	                                            "span",
 	                                            null,
 	                                            _react2.default.createElement(
-	                                                'i',
+	                                                "i",
 	                                                null,
 	                                                item.xj_money
 	                                            )
@@ -25758,34 +25732,34 @@ webpackJsonp([0,1],[
 	                    })
 	                ),
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'footer', id: 'footer' },
+	                    "div",
+	                    { className: "footer", id: "footer" },
 	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'footerList' },
+	                        "ul",
+	                        { className: "footerList" },
 	                        _react2.default.createElement(
-	                            'li',
-	                            { className: 'post' },
-	                            _react2.default.createElement('div', { className: 'footer_icon index_icon' }),
+	                            "li",
+	                            { className: "post" },
+	                            _react2.default.createElement("div", { className: "footer_icon index_icon" }),
 	                            _react2.default.createElement(
-	                                'p',
-	                                { className: 'color_footer font12' },
-	                                '\u9996\u9875'
+	                                "p",
+	                                { className: "color_footer font12" },
+	                                "\u9996\u9875"
 	                            )
 	                        ),
 	                        _react2.default.createElement(
-	                            'li',
+	                            "li",
 	                            null,
-	                            _react2.default.createElement('div', { className: 'footer_icon my_icon' }),
+	                            _react2.default.createElement("div", { className: "footer_icon my_icon" }),
 	                            _react2.default.createElement(
-	                                'p',
-	                                { className: 'color_footer font12' },
-	                                '\u6211\u7684'
+	                                "p",
+	                                { className: "color_footer font12" },
+	                                "\u6211\u7684"
 	                            )
 	                        )
 	                    )
 	                ),
-	                _react2.default.createElement('div', { className: 'ftBlank js_ftBlank' })
+	                _react2.default.createElement("div", { className: "ftBlank js_ftBlank" })
 	            );
 	        }
 	    }]);
@@ -27474,20 +27448,20 @@ webpackJsonp([0,1],[
 	        content: {
 	            list: [{
 	                src: '../../src/assets/img/sh_home_qr.png',
-	                title: '订单确认',
-	                hash: '#myOrderConfirme'
+	                title: '确认订单',
+	                hash: 'myOrderConfirme'
 	            }, {
 	                src: '../../src/assets/img/sh_home_gl.png',
 	                title: '订单管理',
-	                hash: '#myOrderList'
+	                hash: 'myOrderList'
 	            }, {
 	                src: '../../src/assets/img/sh_home_tq.png',
-	                title: '提取货款',
-	                hash: '#myAccount'
+	                title: '表单提交',
+	                hash: 'mySurname'
 	            }, {
 	                src: '../../src/assets/img/sh_home_ewm.png',
-	                title: '我的二维码',
-	                hash: '#myCode'
+	                title: '生命周期',
+	                hash: 'myCode'
 	            }],
 	            listDetail: [{
 	                icon: 'icon1',
@@ -36062,12 +36036,151 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 229 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Created by zhoufei on 2016/11/22.
-	 */
 	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by zhoufei on 2016/11/22.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	
+	var Cmount = function (_React$Component) {
+	    _inherits(Cmount, _React$Component);
+	
+	    function Cmount(props) {
+	        _classCallCheck(this, Cmount);
+	
+	        var _this = _possibleConstructorReturn(this, (Cmount.__proto__ || Object.getPrototypeOf(Cmount)).call(this, props));
+	
+	        _this.state = {
+	            enable: false
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(Cmount, [{
+	        key: "handleClick",
+	        value: function handleClick() {
+	            this.setState({
+	                enable: !this.state.enable
+	            });
+	        }
+	    }, {
+	        key: "componentWillMount",
+	        value: function componentWillMount() {
+	            console.log("渲染前");
+	            this.timer = setInterval(function () {
+	                return console.log("不断打印总");
+	            }, 500);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            console.log("渲染中");
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "lifeCycle" },
+	                _react2.default.createElement(
+	                    "h3",
+	                    null,
+	                    "React\u7684\u751F\u547D\u5468\u671F"
+	                ),
+	                _react2.default.createElement(
+	                    "ul",
+	                    null,
+	                    _react2.default.createElement(
+	                        "p",
+	                        null,
+	                        "\u4E00\u3001\u6E32\u67D3\u671F"
+	                    ),
+	                    _react2.default.createElement(
+	                        "li",
+	                        null,
+	                        "1\u3001componentWillMount \u5728render \u524D\uFF1A\u76F8\u5F53\u4E8E\u521D\u59CB\u5316\uFF0C\u5728render\u6E32\u67D3\u52A8\u4F5C\u6267\u884C\u524D\u8981\u5E72\u7684\u4E8B"
+	                    ),
+	                    _react2.default.createElement(
+	                        "li",
+	                        null,
+	                        "2\u3001componentDidMound  \u5728render\u6E32\u67D3\u540E\u9A6C\u4E0A\u6267\u884C\u7684\uFF08\u6700\u540E\u4E00\u6B21\u4FEE\u6539state\uFF09\u5728render\u6E32\u67D3\u52A8\u4F5C\u6267\u884C\u540E\u9A6C\u4E0A\u8981\u5E72\u7684\u4E8B"
+	                    ),
+	                    _react2.default.createElement(
+	                        "li",
+	                        null,
+	                        "3\u3001componentWillUnmount \u9500\u6BC1\u671F\uFF1A\u5728\u7EC4\u4EF6\u4ECE\u9875\u9762dom\u4E2D\u79FB\u9664\u65F6\u8981\u5E72\u7684\u4E8B"
+	                    ),
+	                    _react2.default.createElement(
+	                        "p",
+	                        null,
+	                        "\u4E8C\u3001\u5B58\u5728\u671F"
+	                    ),
+	                    _react2.default.createElement(
+	                        "li",
+	                        null,
+	                        "1\u3001componentWillUpdate \u66F4\u65B0\u524D\uFF0C\u4E5F\u5C31\u662Fstate\u6539\u53D8\u540E\u4ECE\u65B0\u66F4\u65B0"
+	                    ),
+	                    _react2.default.createElement(
+	                        "li",
+	                        null,
+	                        "2\u3001componentDidUpdate  \u66F4\u65B0\u540E "
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    null,
+	                    _react2.default.createElement("input", { type: "text", value: this.state.enable ? "disable" : "enable", className: this.state.enable ? "bgColor" : "", disabled: this.state.enable }),
+	                    _react2.default.createElement(
+	                        "button",
+	                        { onClick: this.handleClick.bind(this) },
+	                        "\u6539\u53D8state"
+	                    )
+	                )
+	            );
+	        }
+	    }, {
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            console.log("渲染后");
+	        }
+	    }, {
+	        key: "componentWillUpdate",
+	        value: function componentWillUpdate() {
+	            console.log("更新前");
+	        }
+	    }, {
+	        key: "componentDidUpdate",
+	        value: function componentDidUpdate() {
+	            console.log("更新后");
+	        }
+	    }, {
+	        key: "componentWillUnmount",
+	        value: function componentWillUnmount() {
+	            console.log("销毁啦");
+	            alert("我销毁啦。。。");
+	            clearInterval(this.timer);
+	        }
+	    }]);
+	
+	    return Cmount;
+	}(_react2.default.Component);
+	
+	exports.default = Cmount;
 
 /***/ },
 /* 230 */
@@ -36158,9 +36271,12 @@ webpackJsonp([0,1],[
 	        key: 'handleSubmitClick',
 	        value: function handleSubmitClick() {
 	            this.setState({
+	                loadIsHide: '',
 	                agreeClassName: 'active'
 	            });
-	            alert("submintFun");
+	            setTimeout(function () {
+	                location.hash = 'myOrderList';
+	            }, 1000);
 	        }
 	    }, {
 	        key: 'handleAgreeCLick',
@@ -36367,6 +36483,8 @@ webpackJsonp([0,1],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(160);
+	
 	var _order = __webpack_require__(233);
 	
 	var _order2 = _interopRequireDefault(_order);
@@ -36378,6 +36496,10 @@ webpackJsonp([0,1],[
 	var _webpackZepto = __webpack_require__(226);
 	
 	var _webpackZepto2 = _interopRequireDefault(_webpackZepto);
+	
+	var _loadCartoon = __webpack_require__(225);
+	
+	var _loadCartoon2 = _interopRequireDefault(_loadCartoon);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -36398,8 +36520,10 @@ webpackJsonp([0,1],[
 	        var _this = _possibleConstructorReturn(this, (OrderList.__proto__ || Object.getPrototypeOf(OrderList)).call(this, props));
 	
 	        _this.state = {
+	            loadIsHide: '',
+	            contentIsHide: 'hide',
 	            orderList: [],
-	            selected: ''
+	            selected: false
 	        };
 	        return _this;
 	    }
@@ -36411,23 +36535,26 @@ webpackJsonp([0,1],[
 	                url: 'order/orderList',
 	                dataType: 'json',
 	                success: function (data) {
-	                    this.setState({
-	                        orderList: data.content.orderList
-	                    });
+	                    setTimeout(function () {
+	                        this.setState({
+	                            loadIsHide: 'hide',
+	                            contentIsHide: '',
+	                            orderList: data.content.orderList
+	                        });
+	                    }.bind(this), 1000);
 	                }.bind(this)
 	            });
 	        }
 	    }, {
 	        key: 'handleClick',
 	        value: function handleClick() {
-	            console.log(this);
 	            _webpackZepto2.default.ajax({
 	                url: 'order/orderList',
 	                dataType: 'json',
 	                success: function (data) {
 	                    this.setState({
 	                        orderList: data.content.orderList,
-	                        selected: this.state.selected ? '' : 'selected'
+	                        selected: !this.state.selected
 	                    });
 	                }.bind(this)
 	            });
@@ -36443,16 +36570,17 @@ webpackJsonp([0,1],[
 	                    null,
 	                    _react2.default.createElement(
 	                        'span',
-	                        { onClick: this.handleClick.bind(this), className: ' tab right js_section' },
+	                        { onClick: this.handleClick.bind(this), className: (this.state.selected ? "selected " : "") + "tab right js_section" },
 	                        '\u5F85\u7ED3\u7B97\u8BA2\u5355'
 	                    ),
 	                    _react2.default.createElement(
 	                        'span',
-	                        { onClick: this.handleClick.bind(this), className: this.state.selected + " tab js_all" },
+	                        { onClick: this.handleClick.bind(this), className: (this.state.selected ? "" : "selected ") + " tab js_all" },
 	                        '\u5168\u90E8'
 	                    )
 	                ),
-	                _react2.default.createElement(_order2.default, { orderList: this.state.orderList })
+	                _react2.default.createElement(_order2.default, { orderList: this.state.orderList }),
+	                _react2.default.createElement(_loadCartoon2.default, { loadIsHide: this.state.loadIsHide })
 	            );
 	        }
 	    }]);
@@ -36466,7 +36594,7 @@ webpackJsonp([0,1],[
 /* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -36477,6 +36605,8 @@ webpackJsonp([0,1],[
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(160);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -36502,73 +36632,82 @@ webpackJsonp([0,1],[
 	    }
 	
 	    _createClass(Order, [{
-	        key: "render",
+	        key: 'handleClick',
+	        value: function handleClick(orderGid) {
+	            location.hash = "orderDetail/" + orderGid;
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "div",
-	                { className: "orderBox" },
+	                'div',
+	                { className: 'orderBox' },
 	                this.props.orderList.map(function (item, i) {
 	                    return _react2.default.createElement(
-	                        "div",
-	                        { className: "item1" },
+	                        _reactRouter.Link,
+	                        { to: '/MyorderDetail/' + item.orderGid },
 	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "itemTitle1" },
+	                            'div',
+	                            { className: 'item1' },
 	                            _react2.default.createElement(
-	                                "div",
-	                                null,
-	                                item.stateName
-	                            ),
-	                            _react2.default.createElement(
-	                                "p",
-	                                null,
-	                                item.createTime
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "itemContent1" },
-	                            _react2.default.createElement(
-	                                "div",
-	                                { className: "money" },
+	                                'div',
+	                                { className: 'itemTitle1' },
 	                                _react2.default.createElement(
-	                                    "p",
-	                                    { className: "first" },
-	                                    item.loadMoney
+	                                    'div',
+	                                    null,
+	                                    item.stateName == 1 ? "待结算" : "已结算"
 	                                ),
 	                                _react2.default.createElement(
-	                                    "p",
-	                                    { className: "secound" },
-	                                    "\u5206\u671F\u91D1\u989D(\u5143)"
+	                                    'p',
+	                                    null,
+	                                    item.createTime
 	                                )
 	                            ),
 	                            _react2.default.createElement(
-	                                "div",
-	                                { className: "type" },
+	                                'div',
+	                                { className: 'itemContent1' },
 	                                _react2.default.createElement(
-	                                    "p",
-	                                    { className: "first" },
-	                                    item.type
+	                                    'div',
+	                                    { className: 'money' },
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { className: 'first' },
+	                                        item.loadMoney
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { className: 'secound' },
+	                                        '\u5206\u671F\u91D1\u989D(\u5143)'
+	                                    )
 	                                ),
 	                                _react2.default.createElement(
-	                                    "p",
-	                                    { className: "secound" },
-	                                    "\u4EA4\u6613\u7C7B\u578B"
-	                                )
-	                            ),
-	                            _react2.default.createElement(
-	                                "div",
-	                                { className: "number" },
-	                                _react2.default.createElement(
-	                                    "p",
-	                                    { className: "first" },
-	                                    item.per,
-	                                    "\u671F"
+	                                    'div',
+	                                    { className: 'type' },
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { className: 'first' },
+	                                        item.type == 1 ? "商品贷" : "现金贷"
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { className: 'secound' },
+	                                        '\u4EA4\u6613\u7C7B\u578B'
+	                                    )
 	                                ),
 	                                _react2.default.createElement(
-	                                    "p",
-	                                    { className: "secound" },
-	                                    "\u5206\u671F\u671F\u6570"
+	                                    'div',
+	                                    { className: 'number' },
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { className: 'first' },
+	                                        item.per,
+	                                        '\u671F'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'p',
+	                                        { className: 'secound' },
+	                                        '\u5206\u671F\u671F\u6570'
+	                                    )
 	                                )
 	                            )
 	                        )
@@ -36603,11 +36742,12 @@ webpackJsonp([0,1],[
 	    _mockjs2.default.mock(/order\/orderList/, {
 	        content: {
 	            'orderList|1-8': [{
-	                stateName: '待结算',
-	                createTime: '2016-11-23',
-	                loadMoney: '1000.00',
-	                type: '商品贷',
-	                per: '3'
+	                'stateName|1-2': 1,
+	                'createTime': '2016-11-23',
+	                'loadMoney|1000-6000': 1000.00,
+	                'type|1-2': 1,
+	                'per|1-8': 1,
+	                'orderGid': '2d0x1c6d191d2d34n384u38bud39'
 	            }]
 	        }
 	    });
@@ -36617,21 +36757,786 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 235 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Created by zhoufei on 2016/11/22.
-	 */
-	"use strict";
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _list = __webpack_require__(236);
+	
+	var _list2 = _interopRequireDefault(_list);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by zhoufei on 2016/11/22.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	
+	var data = [{
+	    "ulContent": [{
+	        "inputName": "姓名",
+	        "placeholder": "请输入姓名",
+	        "id": "name"
+	    }, {
+	        "inputName": "身份证号",
+	        "placeholder": "请输入身份证号",
+	        "id": "idCard"
+	    }],
+	    "ulTitle": "实名认证"
+	}, {
+	    "ulContent": [{
+	        "inputName": "银行卡号",
+	        "placeholder": "请输入借记卡卡号",
+	        "id": "bankCard"
+	    }, {
+	        "inputName": "预留手机号",
+	        "placeholder": "请输入手机号",
+	        "id": "phoneNumber"
+	    }],
+	    "ulTitle": "储蓄卡信息"
+	}];
+	
+	var MyForm = function (_React$Component) {
+	    _inherits(MyForm, _React$Component);
+	
+	    function MyForm(props) {
+	        _classCallCheck(this, MyForm);
+	
+	        var _this = _possibleConstructorReturn(this, (MyForm.__proto__ || Object.getPrototypeOf(MyForm)).call(this, props));
+	
+	        _this.state = {};
+	        return _this;
+	    }
+	
+	    _createClass(MyForm, [{
+	        key: 'handleClick',
+	        value: function handleClick(e) {
+	            console.log(this);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'form',
+	                    { id: 'surename', style: { "backgroundColor": "#F3F3F3" } },
+	                    _react2.default.createElement(_list2.default, { fromList: data })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'foot_button' },
+	                    _react2.default.createElement(
+	                        'p',
+	                        { className: 'nextSubmit', onClick: this.handleClick.bind(this) },
+	                        '\u4E0B\u4E00\u6B65'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return MyForm;
+	}(_react2.default.Component);
+	
+	exports.default = MyForm;
 
 /***/ },
 /* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by zhoufei on 2016/11/30.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	
+	var List = function (_React$Component) {
+	    _inherits(List, _React$Component);
+	
+	    function List(props) {
+	        _classCallCheck(this, List);
+	
+	        var _this = _possibleConstructorReturn(this, (List.__proto__ || Object.getPrototypeOf(List)).call(this, props));
+	
+	        _this.stats = {};
+	        return _this;
+	    }
+	
+	    _createClass(List, [{
+	        key: "handleChange",
+	        value: function handleChange(id) {
+	            console.log(this.refs.id);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                this.props.fromList.map(function (items, i) {
+	                    return _react2.default.createElement(
+	                        "div",
+	                        null,
+	                        _react2.default.createElement(
+	                            "h3",
+	                            { className: "title" },
+	                            items.ulTitle
+	                        ),
+	                        _react2.default.createElement(
+	                            "ul",
+	                            { className: "zz-list" },
+	                            items.ulContent.map(function (item, i) {
+	                                return _react2.default.createElement(
+	                                    "li",
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        "label",
+	                                        { "for": "cardHolderName" },
+	                                        item.inputName
+	                                    ),
+	                                    _react2.default.createElement("input", { onBlur: _this2.handleChange.bind(_this2), ref: item.id, name: "cardHolderName", type: "text", placeholder: item.placeholder })
+	                                );
+	                            })
+	                        )
+	                    );
+	                })
+	            );
+	        }
+	    }]);
+	
+	    return List;
+	}(_react2.default.Component);
+	
+	exports.default = List;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _table = __webpack_require__(238);
+	
+	var _table2 = _interopRequireDefault(_table);
+	
+	var _webpackZepto = __webpack_require__(226);
+	
+	var _webpackZepto2 = _interopRequireDefault(_webpackZepto);
+	
+	var _dialog = __webpack_require__(239);
+	
+	var _dialog2 = _interopRequireDefault(_dialog);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by zhoufei on 2016/11/26.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	
+	
+	var StudentScoreTable = function (_React$Component) {
+	    _inherits(StudentScoreTable, _React$Component);
+	
+	    function StudentScoreTable(props) {
+	        _classCallCheck(this, StudentScoreTable);
+	
+	        var _this = _possibleConstructorReturn(this, (StudentScoreTable.__proto__ || Object.getPrototypeOf(StudentScoreTable)).call(this, props));
+	
+	        _this.state = {
+	            genderFilter: 0,
+	            nameFilter: '',
+	            data: []
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(StudentScoreTable, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            _webpackZepto2.default.ajax({
+	                url: 'order/tableDate',
+	                dataType: 'json',
+	                success: function (data) {
+	                    this.setState({
+	                        data: data.content.orderList
+	                    });
+	                }.bind(this)
+	            });
+	        }
+	    }, {
+	        key: 'onGenderChange',
+	        value: function onGenderChange(gender) {
+	            this.setState({ genderFilter: gender });
+	        }
+	    }, {
+	        key: 'onNameChange',
+	        value: function onNameChange(name) {
+	            this.setState({ nameFilter: name });
+	        }
+	    }, {
+	        key: 'onDeleteScoreItem',
+	        value: function onDeleteScoreItem(id) {
+	            var fanilData = [];
+	            this.state.data.map(function (item) {
+	                if (item._id != id) {
+	                    fanilData.push(item);
+	                }
+	            });
+	            this.setState({ data: fanilData });
+	        }
+	    }, {
+	        key: 'handleClick',
+	        value: function handleClick() {
+	            console.dir(_dialog2.default);
+	            _dialog2.default.dialog({
+	                "content": '<div>你好</div>'
+	            }).show();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'boxPadding' },
+	                _react2.default.createElement(NameFilter, { onNameChange: this.onNameChange.bind(this), nameFilter: this.state.nameFilter }),
+	                _react2.default.createElement(GenderFilter, { onGenderChange: this.onGenderChange.bind(this), genderFilter: this.state.genderFilter }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'addBox' },
+	                    _react2.default.createElement(
+	                        'button',
+	                        { onClick: this.handleClick.bind(this), className: 'addBtn' },
+	                        '\u6DFB\u52A0\u8BB0\u5F55'
+	                    )
+	                ),
+	                _react2.default.createElement(ScoreTable, { deleteScoreItem: this.onDeleteScoreItem.bind(this), scoreNotes: this.state.data, genderFilter: this.state.genderFilter, nameFilter: this.state.nameFilter }),
+	                _react2.default.createElement(AddScoreItem, null)
+	            );
+	        }
+	    }]);
+	
+	    return StudentScoreTable;
+	}(_react2.default.Component);
+	
+	;
+	
+	var AddScoreItem = function (_React$Component2) {
+	    _inherits(AddScoreItem, _React$Component2);
+	
+	    function AddScoreItem() {
+	        _classCallCheck(this, AddScoreItem);
+	
+	        return _possibleConstructorReturn(this, (AddScoreItem.__proto__ || Object.getPrototypeOf(AddScoreItem)).apply(this, arguments));
+	    }
+	
+	    _createClass(AddScoreItem, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement('div', null);
+	        }
+	    }]);
+	
+	    return AddScoreItem;
+	}(_react2.default.Component);
+	
+	var GenderFilter = function (_React$Component3) {
+	    _inherits(GenderFilter, _React$Component3);
+	
+	    function GenderFilter() {
+	        _classCallCheck(this, GenderFilter);
+	
+	        return _possibleConstructorReturn(this, (GenderFilter.__proto__ || Object.getPrototypeOf(GenderFilter)).apply(this, arguments));
+	    }
+	
+	    _createClass(GenderFilter, [{
+	        key: 'genderChangeHandler',
+	        value: function genderChangeHandler() {
+	            this.props.onGenderChange(this.refs.genderFilter.value);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'condition-item left sex' },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        '\u6309\u6027\u522B\u7B5B\u9009:'
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'select',
+	                    { onChange: this.genderChangeHandler.bind(this), ref: 'genderFilter' },
+	                    _react2.default.createElement(
+	                        'option',
+	                        { value: '0' },
+	                        'All'
+	                    ),
+	                    _react2.default.createElement(
+	                        'option',
+	                        { value: '1' },
+	                        '\u7537\u751F'
+	                    ),
+	                    _react2.default.createElement(
+	                        'option',
+	                        { value: '2' },
+	                        '\u5973\u751F'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return GenderFilter;
+	}(_react2.default.Component);
+	
+	;
+	
+	var NameFilter = function (_React$Component4) {
+	    _inherits(NameFilter, _React$Component4);
+	
+	    function NameFilter() {
+	        _classCallCheck(this, NameFilter);
+	
+	        return _possibleConstructorReturn(this, (NameFilter.__proto__ || Object.getPrototypeOf(NameFilter)).apply(this, arguments));
+	    }
+	
+	    _createClass(NameFilter, [{
+	        key: 'nameChangeHandler',
+	        value: function nameChangeHandler() {
+	            this.props.onNameChange(this.refs.nameFilter.value);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'condition-item right name' },
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        '\u6309\u59D3\u540D\u7B5B\u9009:'
+	                    )
+	                ),
+	                _react2.default.createElement('input', { type: 'text', ref: 'nameFilter', onChange: this.nameChangeHandler.bind(this), value: this.props.nameFilter })
+	            );
+	        }
+	    }]);
+	
+	    return NameFilter;
+	}(_react2.default.Component);
+	
+	;
+	
+	var ScoreTable = function (_React$Component5) {
+	    _inherits(ScoreTable, _React$Component5);
+	
+	    function ScoreTable() {
+	        _classCallCheck(this, ScoreTable);
+	
+	        return _possibleConstructorReturn(this, (ScoreTable.__proto__ || Object.getPrototypeOf(ScoreTable)).apply(this, arguments));
+	    }
+	
+	    _createClass(ScoreTable, [{
+	        key: 'deleteItemHandler',
+	        value: function deleteItemHandler(id) {
+	            this.props.deleteScoreItem(id);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var scoreNotes = [];
+	            var genderFilter = +this.props.genderFilter,
+	                nameFilter = this.props.nameFilter,
+	                GENDER = ['', '男', '女'];
+	            this.props.scoreNotes.map(function (scoreItem) {
+	                if (genderFilter !== 0 && nameFilter === '') {
+	                    // 仅genderfilter生效
+	                    if (GENDER[genderFilter] === scoreItem.gender) {
+	                        scoreNotes.push(_react2.default.createElement(ScoreItem, { onDelete: this.deleteItemHandler.bind(this), score: scoreItem }));
+	                    }
+	                    return;
+	                }
+	                if (genderFilter === 0 && nameFilter !== '') {
+	                    // 仅nameFilter生效
+	                    if (scoreItem.name === nameFilter) {
+	                        scoreNotes.push(_react2.default.createElement(ScoreItem, { onDelete: this.deleteItemHandler.bind(this), score: scoreItem }));
+	                    }
+	                    return;
+	                }
+	                if (genderFilter !== 0 && nameFilter !== '') {
+	                    // 两个filter都生效
+	                    if (GENDER[genderFilter] === scoreItem.gender && scoreItem.name === nameFilter) {
+	                        scoreNotes.push(_react2.default.createElement(ScoreItem, { onDelete: this.deleteItemHandler.bind(this), score: scoreItem }));
+	                    }
+	                    return;
+	                }
+	                scoreNotes.push(_react2.default.createElement(ScoreItem, { onDelete: this.deleteItemHandler.bind(this), score: scoreItem }));
+	            }.bind(this));
+	            return _react2.default.createElement(
+	                'table',
+	                { className: 'detailDialog' },
+	                _react2.default.createElement(
+	                    'thead',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            '\u59D3\u540D'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            '\u6027\u522B'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            '\u8BED\u6587'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            '\u6570\u5B66'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            '\u64CD\u4F5C'
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    scoreNotes
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return ScoreTable;
+	}(_react2.default.Component);
+	
+	;
+	
+	var ScoreItem = function (_React$Component6) {
+	    _inherits(ScoreItem, _React$Component6);
+	
+	    function ScoreItem() {
+	        _classCallCheck(this, ScoreItem);
+	
+	        return _possibleConstructorReturn(this, (ScoreItem.__proto__ || Object.getPrototypeOf(ScoreItem)).apply(this, arguments));
+	    }
+	
+	    _createClass(ScoreItem, [{
+	        key: 'handleClick',
+	        value: function handleClick() {
+	            this.props.onDelete(this.props.score._id);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var score = this.props.score;
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    score.name
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    score.gender
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    score.chinese
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    score.math
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: 'trigger' },
+	                        '\u4FEE\u6539'
+	                    ),
+	                    _react2.default.createElement(
+	                        'span',
+	                        { onClick: this.handleClick.bind(this), className: 'trigger' },
+	                        '\u5220\u9664'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return ScoreItem;
+	}(_react2.default.Component);
+	
+	;
+	
+	var Table = function (_React$Component7) {
+	    _inherits(Table, _React$Component7);
+	
+	    function Table(props) {
+	        _classCallCheck(this, Table);
+	
+	        var _this7 = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
+	
+	        _this7.state = {};
+	        return _this7;
+	    }
+	
+	    _createClass(Table, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(StudentScoreTable, null);
+	        }
+	    }]);
+	
+	    return Table;
+	}(_react2.default.Component);
+	
+	exports.default = Table;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _mockjs = __webpack_require__(228);
+	
+	var _mockjs2 = _interopRequireDefault(_mockjs);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function () {
+	    _mockjs2.default.mock(/order\/tableDate/, {
+	        content: {
+	            'orderList|1-20': [{
+	                'name': function name() {
+	                    var familyNames = new Array("赵", "钱", "孙", "李", "周", "吴", "郑", "王", "冯", "陈", "褚", "卫", "蒋", "沈", "韩", "杨", "朱", "秦");
+	                    var givenNames = new Array("子璇", "淼", "国栋", "夫子", "瑞堂", "甜", "敏", "尚", "国贤", "贺祥", "晨涛", "昊轩", "易轩", "益辰", "益帆");
+	                    var i = parseInt(Math.random() * 10);
+	                    var familyName = familyNames[i];
+	                    var givenName = givenNames[i];
+	                    var name = familyName + givenName;
+	                    return name;
+	                },
+	                'gender': function gender() {
+	                    return Math.random() > 0.5 ? "男" : "女";
+	                },
+	                'chinese|80-100': 85,
+	                'math|80-100': 98,
+	                '_id|+1': 0
+	            }]
+	        }
+	    });
+	}(); /**
+	      * Created by zhoufei on 2016/12/1.
+	      */
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Created by 掌众 on 2016/12/3.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+	
+	
+	var _webpackZepto = __webpack_require__(226);
+	
+	var _webpackZepto2 = _interopRequireDefault(_webpackZepto);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function createHtml(param) {
+	    var html = '';
+	    html += '<div id="' + param.id + '" class="shade ' + param.clazz + '">' + '<div class="dialog flex-box flex-align flex-center">' + '<div class=" t_c">' + '' + (param.closeBar ? '<div class="clearfix"><div class="bar"></div></div>' : '') + '<div class=" contentBox">' + '<div class="dialogTitle">' + param.title + '</div>' + '<div class="content">' + param.content + '' + '</div>' + '<div class="buttonBox">' + param.button + '</div>' + '</div>' + '</div>' + '</div>' + '</div>';
+	    return html;
+	}
+	
+	var Dialog = function () {
+	    function Dialog(parmars) {
+	        _classCallCheck(this, Dialog);
+	
+	        var that = this;
+	        var contentHtml = parmars.content;
+	        var buttonArr = parmars.button || [];
+	        var titleHtml = parmars.title || '';
+	        var buttonHtml = '';
+	        if (contentHtml.substr(0, 1) == "#") {
+	            contentHtml = (0, _webpackZepto2.default)(parmars.content).css('display', 'block').prop('outerHTML');
+	            (0, _webpackZepto2.default)(parmars.content).remove();
+	        }
+	        if (buttonArr.length > 0) {
+	            if (buttonArr.length == 1) {
+	                buttonHtml = '<p class="button" id="_id0">' + buttonArr[0].buttonText + '</p>';
+	            } else if (buttonArr.length == 2) {
+	                buttonHtml = '<p class="button ' + buttonArr[0].clazz + '" id="_id0">' + buttonArr[0].buttonText + '</p>' + '<p class="button border-left ' + buttonArr[1].clazz + '" id="_id1">' + buttonArr[1].buttonText + '</p>';
+	            } else {
+	                for (var i = 0, len = buttonArr.length; i < len; i++) {
+	                    buttonHtml += '<span class="button cehis' + buttonArr[i].clazz + '" id="_id' + i + '">' + buttonArr[i].buttonText + '</span>';
+	                }
+	            }
+	        }
+	        this.content = (0, _webpackZepto2.default)(createHtml({
+	            content: contentHtml,
+	            clazz: parmars.clazz || 'temp',
+	            id: parmars.id || '',
+	            closeBar: parmars.closeBar,
+	            shade: parmars.shade || '',
+	            button: buttonHtml,
+	            title: titleHtml
+	        })).appendTo((0, _webpackZepto2.default)("body"));
+	        this.close = parmars.close || this.hide;
+	        this.load = parmars.load || _webpackZepto2.default.noop;
+	        this.closebar = this.content.find('.bar');
+	        this.closebar.on('click', _webpackZepto2.default.proxy(function () {
+	            this.close();
+	        }, this));
+	        this.content.find('.button').on('click', function () {
+	            var arr = parmars.button || [],
+	                callback = [],
+	                _that = this;
+	            for (var i = 0; i < arr.length; i++) {
+	                callback.push({ id: "_id" + i, callback: arr[i].callback });
+	            }
+	            _webpackZepto2.default.each(callback, function (i, val) {
+	                if (val.id == _that.id) {
+	                    val.callback();
+	                    that.close();
+	                }
+	            });
+	        });
+	    }
+	
+	    _createClass(Dialog, [{
+	        key: 'show',
+	        value: function show() {
+	            this.content.show();
+	        }
+	    }, {
+	        key: 'hide',
+	        value: function hide() {
+	            this.content.hide();
+	        }
+	    }, {
+	        key: 'clear',
+	        value: function clear() {
+	            this.closebar.unbind('click', this.close);
+	            this.content.remove();
+	        }
+	    }, {
+	        key: 'set',
+	        value: function set(HTML) {
+	            if (HTML.substr(0, 1) == "#") {
+	                document.getElementById(parmars.content.substr(1)).style.display = "block";
+	                HTML = document.getElementById(parmars.content.substr(1)).outerHTML;
+	            }
+	            this.content.find(".content").html(HTML);
+	        }
+	    }]);
+	
+	    return Dialog;
+	}();
+	
+	exports.default = {
+	    dialog: function dialog(params) {
+	        return new Dialog(_webpackZepto2.default.extend({ closeBar: true }, params));
+	    }
+	};
+
+/***/ },
+/* 240 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 237 */
+/* 241 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

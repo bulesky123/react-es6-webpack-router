@@ -4,6 +4,28 @@
 import React from 'react'
 import Mock from '../assets/mockCtrl/table'
 import $ from 'webpack-zepto'
+import dialog from '../components/dialog'
+const dialogContent='<div>' +
+    '<div style="text-align:left;margin-bottom:10px;">' +
+    '<label style="display:inline-block;width:19%;"><span>姓名:</span></label>' +
+    '<input style="padding-left: 10px;border:1px solid #dedfe0;width:75%;height:30px;border-radius: 4px;" type="text" value="" />' +
+    '</div>' +
+    '<div style="text-align:left;margin-bottom:10px;">' +
+    '<label style="display:inline-block;width:19%;"><span>姓别:</span></label>' +
+    '<select style="padding-left: 10px;border:1px solid #dedfe0;width:80%;height:30px;border-radius: 4px;">' +
+    '<option value="1" >男生</option>' +
+    '<option value="2" >女生</option>' +
+    '</select>' +
+    '</div>' +
+    '<div style="text-align:left;margin-bottom:10px;">' +
+    '<label style="display:inline-block;width:19%;"><span>语文:</span></label>' +
+    '<input style="padding-left: 10px;border:1px solid #dedfe0;width:75%;height:30px;border-radius: 4px;" type="text" value="" />' +
+    '</div>' +
+    '<div style="text-align:left;margin-bottom:10px;">' +
+    '<label style="display:inline-block;width:19%;"><span>数学:</span></label>' +
+    '<input style="padding-left: 10px;border:1px solid #dedfe0;width:75%;height:30px;border-radius: 4px;" type="text" value="" />' +
+    '</div>' +
+    '</div>'
 class StudentScoreTable extends React.Component{
     constructor(props){
         super(props);
@@ -39,12 +61,29 @@ class StudentScoreTable extends React.Component{
         });
         this.setState({data:fanilData})
     }
+    handleClick(){
+        dialog.dialog({
+            "title":'添加记录',
+            "content":dialogContent,
+            "button":[{
+                "buttonText":'取消',
+                "callback":function(){
+                    alert("取消");
+                }
+            },{
+                "buttonText":'确定',
+                "callback":function(){
+                    alert("确定")
+                }
+            }]
+        }).show();
+    }
     render(){
         return (
             <div className="boxPadding">
                 <NameFilter onNameChange={this.onNameChange.bind(this)} nameFilter={this.state.nameFilter}/>
                 <GenderFilter onGenderChange={this.onGenderChange.bind(this)} genderFilter={this.state.genderFilter}/>
-                <div className="addBox"><button className="addBtn">添加记录</button></div>
+                <div className="addBox"><button onClick={this.handleClick.bind(this)} className="addBtn">添加记录</button></div>
                 <ScoreTable deleteScoreItem={this.onDeleteScoreItem.bind(this)} scoreNotes={this.state.data} genderFilter={this.state.genderFilter} nameFilter={this.state.nameFilter} />
                 <AddScoreItem />
             </div>

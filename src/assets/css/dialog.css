@@ -1,0 +1,200 @@
+/** dialog style **/
+/* box 布局 */
+*{
+    margin:0;
+}
+.shade{
+    position: absolute;
+    top:0;
+    width: 100%;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+    display: none;
+}
+.shade.opacity{
+    background: rgba(0,0,0,0.1);
+}
+.shade.none{
+    background: rgba(0,0,0,0);
+}
+.shade > div{
+    height: 100%;
+}
+.flex-h {
+    display: flex;			 /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    /* 09版 */
+    -webkit-box-orient: horizontal;
+    /* 12版 */
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+}
+.flex-box{
+    display: flex;			 /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    /* 09版 默认横向排列 */
+    -webkit-box-orient: horizontal;
+}
+.flex-flow-col{
+    -webkit-box-orient:vertical;
+    box-orient:vertical;
+    -webkit-flex-flow:column;
+    flex-flow:column;
+}
+.flex-center {
+    -webkit-box-pack: center;
+    box-pack: center;
+    /* 左右全部居中 */
+    -webkit-justify-content: center;
+    justify-content : center;
+}
+.flex-justify {
+    -webkit-box-pack: justify;
+    box-pack: justify;
+    /* 平分开来 */
+    -webkit-justify-content: space-around;
+    justify-content : space-around;
+}
+.flex-align{
+    -webkit-box-align:center;
+    box-align:center;
+    /* 上下居中 */
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.flex-stretch{
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    /* 撑满盒子高度 */
+    -webkit-box-align:stretch;
+    box-align:stretch;
+}
+.flex{
+    box-flex:1;
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+    -ms-flex:1;
+    flex:1;
+}
+.none{
+    display: none;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.f_r{
+    float: right;
+}
+.f_l{
+    float: left;
+}
+.t_l{
+    text-align: left;
+}
+.t_r{
+    text-align: right;
+}
+.t_c{
+    text-align: center;
+    width:80%;
+}
+.dialog .content{
+    font-size: 0.7em;
+    padding:0 25px 25px 25px;
+}
+.contentBox{
+    background:#fff;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 0.7em;
+    font-family:"Microsoft Yahei";
+}
+.dialogTitle{
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+.buttonBox{
+    border-top: 1px solid #e4e4e4;
+    font-size: 15px;
+    min-height:35px;
+    line-height:35px;
+    padding:4px 0;
+}
+.buttonBox p:last-child{
+    color:#4c6ed2;
+}
+.buttonBox p.button{
+    width:49%;
+    display:inline-block;
+}
+span.button{
+    width: calc( (100% - 38px) * 0.33);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin:8px 0 8px 8px;
+    float: left;
+}
+span.button:nth-child(3n+1){
+    margin-left:10px;
+}
+.border-left{
+    border-left:1px solid #e4e4e4;
+}
+.dialog  .bar{
+    width: 2rem;
+    height: 2rem;
+    float: right;
+    background-position: center;
+    background-image: url("../img/yh_gb.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.dialog .toast{
+    padding: 8px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.8);
+    color: #ffffff;
+}
+.dialog .content .confirm{
+    width: 12rem;
+    font-size: 1.14em;
+}
+.dialog .content .confirm .tit{
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border-bottom: 1px solid #e2e2e2;
+    text-align: left;
+    padding-left: 10px;
+}
+.dialog .content .confirm .cont{
+    padding:0.5rem;
+    text-align: left;
+
+}
+.dialog .content .confirm .btnbox{
+    height: 2.75rem;
+    line-height: 2.75rem;
+    border-top: 1px solid #e2e2e2;
+}
+.dialog .content .confirm .btnbox .flex{
+    position: relative;
+}
+.dialog .content .confirm .btnbox .line{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -0.7rem;
+    height: 1.4rem;
+    border-left: 1px solid #e2e2e2;
+}

@@ -1,4 +1,11 @@
 /*index*/
+html{
+    color:#000;background:#FFF;font-size: 20px;
+}
+*{
+    margin:0;
+    padding:0;
+}
 #content{
     display: none;
 }
@@ -31,7 +38,7 @@
     text-align: center;
     padding-left: 2px;
 }
-.icon_list li a{
+.icon_list li span{
     display: inline-block;
     width: 50%;
 }
@@ -303,7 +310,12 @@ header span.selected{
     color: #4c6ed2;
 }
 .orderBox{
-    margin:10px 10px 60px 10px;
+    position: fixed;
+    top: 58px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    overflow: auto;
 }
 .item1{
     background: #fff;
@@ -371,6 +383,195 @@ header span.selected{
     font-size: 12px;
     color:#959595;
     margin-top: 4px;
+}
+/*�ҵĶ�ά��*/
+.lifeCycle{
+    padding:35px;
+}
+.lifeCycle h3{
+    text-align:center;
+    padding-bottom:30px;
+}
+.lifeCycle p{
+    font-size:15px;
+}
+.lifeCycle li{
+    line-height:35px;
+    font-size:14px;
+}
+.lifeCycle input{
+    border:1px solid #ccc;
+    width:50%;
+    height:30px;
+}
+.lifeCycle button{
+    height:30px;
+    background:#4c6ed2;
+    border-radius:4px;
+    border:none;
+    margin-left: 20px;
+    width: 80px;
+}
+.lifeCycle .bgColor{
+    background:#ccc;
+}
+/*ʵ����֤*/
+.title{
+    height: 44px;
+    line-height: 44px;
+    padding-left:20px;
+    font-size: 14px;
+    color: #666666;
+}
+.zz-list{
+    display: block;
+    background-color: #ffffff;
+    font-size: 14px;
+    text-align: left;
+}
+.zz-list li{
+    height:48px;
+    line-height: 48px;
+    border-top:1px solid  #e4e4e4;
+    padding-left:20px;
+    padding-right: 20px;
+    position: relative;
+    box-sizing: border-box;
+}
+.zz-list li:last-child{
+    border-bottom:1px solid  #e4e4e4;
+}
+.zz-list li label{
+    color: #303030;
+}
+.zz-list li .value{
+    float: right;
+}
+.zz-list li .icon{
+    position: absolute;
+    left: 15px;
+    top:11px;
+    width: 27px;
+    height: 27px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.zz-list li label.icontext{
+    margin-left: 38px;
+}
+.zz-list li input[type="text"],.zz-list li input[type="tel"]{
+    height: 40px;
+    border: 0;
+    outline: none;
+    margin-left: 10px;
+    font-size: 14px;
+    width: 180px;
+}
+#surenamehead{
+    font-size: 14px;
+}
+#surename .zz-list li > label{
+    width: 80px;
+    display: inline-block;
+}
+#surename .zz-list li .value .supportIcon{
+    display: inline-block;
+    width: 15px;
+    position: relative;
+    top: 3px;
+    right: 1px;
+}
+.nextSubmit{
+    height:44px;
+    line-height:44px;
+    background:#4c6ed2;
+    text-align: center;
+    border-radius:4px;
+    color:#fff;
+    font-size: 16px;
+}
+.foot_button{
+    text-align: center;
+    padding: 0 20px 10px;
+    margin-top: 50px;
+    height: 44px;
+}
+/*����*/
+.boxPadding{
+    padding:0 10px 20px 10px;
+    color:#666;
+}
+.condition-item{
+    margin-top:20px;
+    width:50%;
+    font-size:15px;
+    height:30px;
+    line-height:30px;
+}
+.condition-item label{
+    width:56%;
+    display:inline-block;
+}
+.sex{
+    margin-bottom:10px;
+}
+.condition-item select{
+    height:30px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    border:1px solid #dedfe0;
+    width:calc( 44% - 12px );
+    border-radius:4px;
+    padding-left:10px;
+}
+.condition-item input{
+    border:1px solid #dedfe0;
+    height:30px;
+    width:calc( 44% - 12px );
+    border-radius:4px;
+    padding-left:10px;
+}
+.detailDialog tr{
+    border: 1px solid #dedfe0;
+    text-align: center;
+}
+.detailDialog{
+    margin-top:20px;
+    width:100%;
+    color: #303030;
+    font-size:15px;
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.detailDialog th{
+    height: 30px;
+    border: 1px solid #dedfe0;
+    text-align: center;
+    color:#666;
+}
+.detailDialog td{
+    height: 45px;
+    border: 1px solid #dedfe0;
+    text-align: center;
+}
+.trigger{
+    color:#4c6ed2;
+}
+.trigger:first-child{
+    display: inline-block;
+    margin-right: 10px;
+}
+.addBox{
+    clear: both;
+}
+.addBtn{
+    height: 30px;
+    background: #4c6ed2;
+    border-radius: 4px;
+    border: none;
+    color:#fff;
+    width: 80px;
 }
 a,img,button,input,textarea{ -webkit-tap-highlight-color:rgba(255,255,255,0);}
 *{ margin:0; padding:0;}
